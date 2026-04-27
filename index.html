@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <title>🎂 عيد ميلاد أمنية السادس عشر 🎉</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", "Tahoma", "Cairo", sans-serif;
+        background: linear-gradient(
+          135deg,
+          #f9c7c3 0%,
+          #f8b0a5 50%,
+          #f9a8d2 100%
+        );
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      /* بالونات متحركة */
+      .balloon {
+        position: absolute;
+        bottom: -100px;
+        width: 60px;
+        height: 80px;
+        background: radial-gradient(
+          circle at 30% 30%,
+          rgba(255, 255, 255, 0.8),
+          rgba(0, 0, 0, 0.1)
+        );
+        border-radius: 50%;
+        animation: float 8s ease-in-out infinite;
+        opacity: 0.6;
+        z-index: 1;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0) rotate(0deg);
+          bottom: -100px;
+          opacity: 0.3;
+        }
+        50% {
+          opacity: 0.8;
+        }
+        100% {
+          transform: translateY(-120vh) rotate(20deg);
+          bottom: 100%;
+          opacity: 0;
+        }
+      }
+
+      /* بطاقة التهنئة الرئيسية */
+      .card {
+        background-color: rgba(255, 255, 255, 0.96);
+        border-radius: 80px 40px 80px 40px;
+        max-width: 650px;
+        width: 100%;
+        padding: 40px 30px;
+        text-align: center;
+        box-shadow:
+          0 30px 40px rgba(0, 0, 0, 0.2),
+          0 0 0 12px rgba(255, 215, 200, 0.6);
+        position: relative;
+        z-index: 20;
+        backdrop-filter: blur(2px);
+        transition: transform 0.3s ease;
+        animation: fadeInUp 1s ease;
+      }
+
+      .card:hover {
+        transform: scale(1.01);
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      h1 {
+        font-size: 3rem;
+        color: #d43f6b;
+        margin-bottom: 15px;
+        text-shadow: 3px 3px 0 #ffe0e7;
+        letter-spacing: 2px;
+      }
+
+      .big-sixteen {
+        font-size: 4.5rem;
+        background: linear-gradient(45deg, #ff8c5a, #ff3b6f);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        display: inline-block;
+        margin: 10px 0;
+        font-weight: bold;
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .name {
+        font-size: 2.8rem;
+        font-weight: bold;
+        color: #a13e5c;
+        background: #ffe4e1;
+        display: inline-block;
+        padding: 5px 25px;
+        border-radius: 60px;
+        margin: 10px 0 20px;
+        box-shadow: 0 5px 0 #d68eaa;
+      }
+
+      .message {
+        font-size: 1.35rem;
+        line-height: 1.75;
+        color: #4a2a36;
+        background: #fffaf5;
+        padding: 20px;
+        border-radius: 50px;
+        margin: 25px 0;
+        border-right: 6px solid #f57c9f;
+        text-align: center;
+        font-weight: 500;
+      }
+
+      .emoji-bunch {
+        font-size: 2.5rem;
+        margin: 15px 0;
+        letter-spacing: 12px;
+      }
+
+      .button-wish {
+        background: #ff7795;
+        border: none;
+        color: white;
+        font-size: 1.3rem;
+        font-weight: bold;
+        padding: 12px 28px;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: 0.2s;
+        margin: 15px 0 5px;
+        box-shadow: 0 6px 0 #a13e5c;
+        font-family: inherit;
+      }
+
+      .button-wish:active {
+        transform: translateY(3px);
+        box-shadow: 0 3px 0 #a13e5c;
+      }
+
+      footer {
+        margin-top: 30px;
+        font-size: 0.9rem;
+        color: #b35d7a;
+        border-top: 1px dashed #f3bcce;
+        padding-top: 20px;
+      }
+
+      /* موبايل */
+      @media (max-width: 550px) {
+        .card {
+          padding: 25px 18px;
+        }
+        h1 {
+          font-size: 2.2rem;
+        }
+        .name {
+          font-size: 2rem;
+        }
+        .big-sixteen {
+          font-size: 3rem;
+        }
+        .message {
+          font-size: 1.1rem;
+        }
+      }
+
+      /* تأثيرات هدايا */
+      .gift-icon {
+        font-size: 2rem;
+        cursor: pointer;
+        transition: 0.2s;
+        display: inline-block;
+        margin: 0 12px;
+      }
+      .gift-icon:hover {
+        transform: scale(1.2);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- بالونات عشوائية -->
+    <div id="balloons-container"></div>
+
+    <div class="card">
+      <h1>🎈 عيد ميلاد سعيد يا أمنية! 🎈</h1>
+      <div class="emoji-bunch">🎀🌸🎂✨🎁</div>
+      <div class="big-sixteen">🎉 16 سنة 🎉</div>
+      <div class="name">✨ أمنية الجميلة ✨</div>
+
+      <div class="message">
+        🥳💖<br />
+        ألف مبروك دخولك الـ16 ربيعًا يا أجمل بنوتة!<br />
+        عمرك صار زاهيًا وورديًا مثل قلوبنا لكِ.<br />
+        🌸 كل عام و أنتِ النور و الفرحة و الأمل الجميل 🌸<br />
+        عقبال 100 سنة و إنتِ مبسوطة و ناجحة و متفوقة.<br />
+        ❤️ نحبك كثير و عيد ميلادك دايمًا مميز ❤️
+      </div>
+
+      <div style="margin: 15px 0">
+        <span class="gift-icon" onclick="showSurprise()">🎁 📸</span>
+        <span class="gift-icon" onclick="burstConfetti()">🎉 ✨</span>
+        <span class="gift-icon" onclick="playBirthdaySound()">🎵 🎂</span>
+      </div>
+
+      <button class="button-wish" id="celebrateBtn">
+        🎂 أمنية، إضغطي هنا للاحتفال! 🎂
+      </button>
+
+      <footer>🌟 يوم ميلاد مميز لصاحبة الـ16 ربيعًا 🌟</footer>
+    </div>
+
+    <script>
+      // توليد البالونات
+      function createBalloons() {
+        const container = document.getElementById("balloons-container");
+        const colors = [
+          "#ffadc6",
+          "#fbc8b5",
+          "#ffd966",
+          "#b0e57c",
+          "#ff9a76",
+          "#d291bc",
+          "#ffb7c5",
+        ];
+        for (let i = 0; i < 22; i++) {
+          let balloon = document.createElement("div");
+          balloon.classList.add("balloon");
+          let size = 55 + Math.random() * 45;
+          balloon.style.width = size + "px";
+          balloon.style.height = size + "px";
+          balloon.style.backgroundColor =
+            colors[Math.floor(Math.random() * colors.length)];
+          balloon.style.left = Math.random() * 100 + "%";
+          balloon.style.animationDuration = 5 + Math.random() * 7 + "s";
+          balloon.style.animationDelay = Math.random() * 12 + "s";
+          balloon.style.opacity = 0.5 + Math.random() * 0.4;
+          container.appendChild(balloon);
+        }
+      }
+
+      // تأثير كونفيتي
+      function burstConfetti() {
+        const duration = 2000;
+        const end = Date.now() + duration;
+        const colorsConf = [
+          "#ff3b6f",
+          "#ff9f4a",
+          "#ffe570",
+          "#a3ddcb",
+          "#ffb7b2",
+        ];
+
+        (function frame() {
+          confetti({
+            particleCount: 3,
+            angle: 60,
+            spread: 70,
+            origin: { x: 0, y: 0.6 },
+            colors: colorsConf,
+          });
+          confetti({
+            particleCount: 3,
+            angle: 120,
+            spread: 70,
+            origin: { x: 1, y: 0.6 },
+            colors: colorsConf,
+          });
+          if (Date.now() < end) {
+            requestAnimationFrame(frame);
+          }
+        })();
+
+        // إضافة كونفيتي من كل مكان
+        for (let i = 0; i < 3; i++) {
+          setTimeout(() => {
+            confetti({
+              particleCount: 150,
+              spread: 100,
+              origin: { y: 0.6 },
+              colors: colorsConf,
+            });
+          }, i * 200);
+        }
+        showMessageEffect("🎉 تهانينا يا أمنية! 🎉");
+      }
+
+      // إظهار مفاجأة كتابية
+      function showSurprise() {
+        const messageDiv = document.createElement("div");
+        messageDiv.innerText =
+          "📸🎀 أمنية، أنتِ أجمل هدية في حياتنا! كل عام و أنتِ نجمة ساطعة 🎀📸";
+        messageDiv.style.position = "fixed";
+        messageDiv.style.bottom = "30%";
+        messageDiv.style.left = "50%";
+        messageDiv.style.transform = "translateX(-50%)";
+        messageDiv.style.backgroundColor = "#ffecf0";
+        messageDiv.style.padding = "15px 25px";
+        messageDiv.style.borderRadius = "60px";
+        messageDiv.style.fontSize = "1.2rem";
+        messageDiv.style.fontWeight = "bold";
+        messageDiv.style.color = "#c73b62";
+        messageDiv.style.border = "2px solid #ffb7cd";
+        messageDiv.style.boxShadow = "0 8px 20px rgba(0,0,0,0.2)";
+        messageDiv.style.zIndex = "999";
+        messageDiv.style.textAlign = "center";
+        messageDiv.style.fontFamily = "inherit";
+        document.body.appendChild(messageDiv);
+        setTimeout(() => {
+          messageDiv.remove();
+        }, 3500);
+        // تأثير صغير
+        burstConfetti();
+      }
+
+      function playBirthdaySound() {
+        // استخدام Web Audio API لصوت بسيط (نغمة ميلاد) لأن بعض المتصفحات تمنع الصوت التلقائي، لكن مع زر تفاعلي يعمل
+        try {
+          const audioContext = new (
+            window.AudioContext || window.webkitAudioContext
+          )();
+          const playNote = (freq, duration, time) => {
+            const osc = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            osc.connect(gain);
+            gain.connect(audioContext.destination);
+            osc.frequency.value = freq;
+            gain.gain.value = 0.3;
+            osc.start(time);
+            gain.gain.exponentialRampToValueAtTime(0.00001, time + duration);
+            osc.stop(time + duration);
+          };
+          if (audioContext.state === "suspended") {
+            audioContext.resume().then(() => {
+              const now = audioContext.currentTime;
+              playNote(523.25, 0.4, now); // C5
+              playNote(587.33, 0.4, now + 0.4);
+              playNote(659.25, 0.6, now + 0.85);
+              playNote(523.25, 0.8, now + 1.5);
+            });
+          } else {
+            const now = audioContext.currentTime;
+            playNote(523.25, 0.4, now);
+            playNote(587.33, 0.4, now + 0.4);
+            playNote(659.25, 0.6, now + 0.85);
+            playNote(523.25, 0.8, now + 1.5);
+          }
+        } catch (e) {
+          console.log("audio not supported");
+        }
+        showMessageEffect("🎶 كل سنة و أنتِ طيبة بأجمل الألحان 🎶");
+      }
+
+      function showMessageEffect(msg) {
+        const notif = document.createElement("div");
+        notif.innerText = msg;
+        notif.style.position = "fixed";
+        notif.style.top = "20%";
+        notif.style.left = "50%";
+        notif.style.transform = "translateX(-50%)";
+        notif.style.backgroundColor = "#ffefc0";
+        notif.style.padding = "12px 24px";
+        notif.style.borderRadius = "40px";
+        notif.style.fontSize = "1.2rem";
+        notif.style.fontWeight = "bold";
+        notif.style.color = "#b33b5c";
+        notif.style.border = "2px solid #f5acbf";
+        notif.style.zIndex = "999";
+        notif.style.boxShadow = "0 5px 15px rgba(0,0,0,0.2)";
+        document.body.appendChild(notif);
+        setTimeout(() => {
+          notif.remove();
+        }, 2500);
+      }
+
+      // تحضير حدث الزر الرئيسي
+      document.getElementById("celebrateBtn").addEventListener("click", () => {
+        burstConfetti();
+        showMessageEffect("🥳🥳 أمنية، مبروك الـ16 سنة! عقبال مليون فرحة 🥳🥳");
+        // انفجار بالونات خفيف وهمي
+        for (let i = 0; i < 6; i++) {
+          setTimeout(() => {
+            const fakeBallon = document.createElement("div");
+            fakeBallon.innerText = "🎈";
+            fakeBallon.style.position = "fixed";
+            fakeBallon.style.fontSize = "30px";
+            fakeBallon.style.left = Math.random() * 90 + "%";
+            fakeBallon.style.bottom = "0px";
+            fakeBallon.style.pointerEvents = "none";
+            fakeBallon.style.zIndex = "1000";
+            fakeBallon.style.transition = "all 3s ease";
+            document.body.appendChild(fakeBallon);
+            setTimeout(() => {
+              fakeBallon.style.transform = "translateY(-400px) rotate(10deg)";
+              fakeBallon.style.opacity = "0";
+              setTimeout(() => fakeBallon.remove(), 3000);
+            }, 50);
+          }, i * 100);
+        }
+      });
+
+      // تأكد من وجود مكتبة confetti (CDN)
+      if (typeof confetti !== "function") {
+        const script = document.createElement("script");
+        script.src = "https://cdn.jsdelivr.net/npm/canvas-confetti@1";
+        script.onload = () => {
+          // بعد تحميل المكتبة نجعل زر الكونفيتي جاهز
+          console.log("confetti loaded");
+        };
+        document.head.appendChild(script);
+      }
+
+      // بدء تشغيل البالونات
+      createBalloons();
+      // عرض تحية صغيرة بعد التحميل
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          if (typeof confetti === "function") burstConfetti();
+        }, 300);
+      });
+    </script>
+  </body>
+</html>
